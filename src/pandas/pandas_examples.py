@@ -21,6 +21,7 @@ def transform_insurance_data(df):
 def main():
     df = pd.read_csv("data/insurance.csv")
     transformed_df = transform_insurance_data(df)
+    print(transformed_df.head())
 
 
 if __name__ == "__main__":

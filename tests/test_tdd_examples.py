@@ -3,31 +3,42 @@ import pytest
 from src.base.tdd_examples import get_email_handle
 
 
-@pytest.mark.parametrize(
-    "email,expected",
-    [
-        ("user@example.com", "user"),
-        ("john.doe@company.co.uk", "john.doe"),
-        ("test_123@test.org", "test_123"),
-        ("simple@test.com", "simple"),
-    ],
-)
-def test_get_email_handle(email, expected):
-    assert get_email_handle(email) == expected
+# Phase 1: Basic functionality
+def test_basic_email():
+    assert get_email_handle("user@example.com") == "user"
 
 
+# Phase 2: Handle dots
+def test_email_with_dots():
+    assert get_email_handle("john.doe@example.com") == "john.doe"
+
+
+# Phase 3: Handle plus sign notation
+def test_email_with_plus():
+    assert get_email_handle("user+tag@example.com") == "user"
+    assert get_email_handle("john.doe+newsletter@example.com") == "john.doe"
+
+
+# Phase 4: Format validation
 @pytest.mark.parametrize(
-    "invalid_email",
+    "invalid_email,error_message",
     [
-        "invalid-email",
-        "user@company@example.com",
+        ("invalid-email", "Must contain exactly one @"),
+        ("user@company@example.com", "Must contain exactly one @"),
+        ("@example.com", "Username cannot be empty"),
+        ("", "Email cannot be empty"),
     ],
 )
-def test_invalid_email(invalid_email):
-    with pytest.raises(ValueError):
+def test_invalid_formats(invalid_email, error_message):
+    with pytest.raises(ValueError, match=error_message):
         get_email_handle(invalid_email)
 
 
-def test_invalid_type():
-    with pytest.raises(TypeError):
-        get_email_handle(123)
+# Phase 5: Type validation
+@pytest.mark.parametrize(
+    "invalid_input",
+    [None, 123, [], {}],
+)
+def test_invalid_types(invalid_input):
+    with pytest.raises(TypeError, match="Email must be a string"):
+        get_email_handle(invalid_input)

@@ -3,7 +3,7 @@ from src.mock.mock_examples import get_weather
 
 def test_get_weather():
     """
-    Test actual API call with default coordinates (Hong Kong)
+    Test actual API call with default coordinates (Singapore)
     """
     response = get_weather()
     assert isinstance(response, dict)
@@ -14,11 +14,11 @@ def test_get_weather():
 def test_get_weather_mocked(mocker):
     """Test get_weather with mocked API response"""
     mock_weather_data = {
-        "latitude": 22.3193,
-        "longitude": 114.1694,
-        "timezone": "Asia/Hong_Kong",
+        "latitude": 1.3521,
+        "longitude": 103.8198,
+        "timezone": "Asia/Singapore",
         "current": {
-            "time": "2023-10-20T14:00",
+            "time": "2024-12-30T14:00",
             "temperature_2m": 25.6,
             "relative_humidity_2m": 80,
             "wind_speed_10m": 3.6,
@@ -39,6 +39,6 @@ def test_get_weather_mocked(mocker):
     assert isinstance(result, dict)
     assert "current" in result
     assert isinstance(result["current"]["temperature_2m"], (int, float))
-    assert isinstance(result["current"]["relative_humidity_2m"], (int, float))
+    assert isinstance(result["current"]["wind_speed_10m"], (int, float))
     assert 0 <= result["current"]["relative_humidity_2m"] <= 100
-    assert result["timezone"] == "Asia/Hong_Kong"
+    assert result["timezone"] == "Asia/Singapore"
