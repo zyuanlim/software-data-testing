@@ -1,0 +1,33 @@
+{
+    "address": "123 Tech Avenue, San Francisco, CA 94105",
+    "education": [
+        {
+            "degree": "Master of Science",
+            "institution": "Stanford University",
+            "major": "Artificial Intelligence",
+            "year": "2017"
+        },
+        {
+            "degree": "Bachelor of Science",
+            "institution": "University of California, Berkeley",
+            "major": "Computer Systems",
+            "year": "2015"
+        }
+    ],
+    "email": "jane.smith@email.com",
+    "experiences": [
+        {
+            "company": "TechCorp International",
+            "description": "Led development of cloud-native applications using microservices architecture. Managed a team of 5 engineers and implemented CI/CD pipelines reducing deployment time by 40%.",
+            "duration": "January 2020 - Present",
+            "position": "Senior Software Engineer"
+        },
+        {
+            "company": "Innovation Studios",
+            "description": "Developed full-stack applications using React and Node.js. Implemented automated testing frameworks improving code coverage by 75%.",
+            "duration": "March 2017 - December 2019",
+            "position": "Software Engineer"
+        }
+    ],
+    "name": "Jane Smith"
+}
