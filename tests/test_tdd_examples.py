@@ -8,18 +8,13 @@ def test_basic_email():
     assert get_email_handle("user@example.com") == "user"
 
 
-# Phase 2: Handle dots
-def test_email_with_dots():
-    assert get_email_handle("john.doe@example.com") == "john.doe"
-
-
-# Phase 3: Handle plus sign notation
+# Phase 2: Handle plus sign notation
 def test_email_with_plus():
     assert get_email_handle("user+tag@example.com") == "user"
     assert get_email_handle("john.doe+newsletter@example.com") == "john.doe"
 
 
-# Phase 4: Format validation
+# Phase 3: Format validation
 @pytest.mark.parametrize(
     "invalid_email,error_message",
     [
@@ -34,7 +29,7 @@ def test_invalid_formats(invalid_email, error_message):
         get_email_handle(invalid_email)
 
 
-# Phase 5: Type validation
+# Phase 4: Type validation
 @pytest.mark.parametrize(
     "invalid_input",
     [None, 123, [], {}],

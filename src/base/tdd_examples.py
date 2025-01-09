@@ -3,17 +3,15 @@ def get_email_handle(email):
 
     This function demonstrates TDD with progressively complex requirements:
     1. Basic email handle extraction
-    2. Handle dots in username
-    3. Handle plus sign notation (removes everything after +)
-    4. Format validation
-    5. Type checking
+    2. Handle plus sign notation (removes everything after +)
+    3. Format validation
+    4. Type checking
 
     Args:
         email (str): A valid email address (e.g., 'user@example.com', 'user+tag@example.com')
 
     Returns:
         str: The handle/username part before the @ symbol
-             - Keeps dots (.)
              - Removes everything after plus (+) if present
 
     Raises:
